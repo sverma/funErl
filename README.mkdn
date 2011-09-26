@@ -217,6 +217,35 @@ Orange Color  is equal to "#F09A29" in hexadecimal notation .
      
 The above code puts the binary values of "#F09A29" on 24 bits of space in the variable Pixel. 
 
+Pattern Matching with Binaries 
+
+    91> Pixels = <<213,45,132,64,76,32,76,0,0,234,32,15>>.
+    <<213,45,132,64,76,32,76,0,0,234,32,15>>
+    92> <<Pix1,Pix2,Pix3,Pix4>> = Pixels.
+    ** exception error: no match of right hand side value <<213,45,132,64,76,32,76,0,0,234,32,15>>
+    93> <<Pix1:24, Pix2:24, Pix3:24, Pix4:24>> = Pixels.
+    <<213,45,132,64,76,32,76,0,0,234,32,15>>
+    94> Pix1.
+    13970820
+
+Var:24 means that the variable will hold 24 bits of data, since Pixels variables hold 4 pixels of RGB colors in binary the total segments (12) didn't match the number of the segments in the second statement (4) . 
+
+You can use more than on way to describe a binary segments : 
+
+    Value
+    Value:Size
+    Value/TypeSpecifierList
+    Value:Size/TypeSpecifierList
+
+Example
+
+    <<213,45,132,64,76,32,76,0,0,234,32,15>>
+    99> R.                                              
+    213
+    100> Rest.
+    <<45,132,64,76,32,76,0,0,234,32,15>>
+
+
 
 
  
