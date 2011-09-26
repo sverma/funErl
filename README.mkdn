@@ -11,18 +11,27 @@ Variable should start with either '_' or a capital letter .
 * The = operator (not the variables) has the role of comparing values and complaining if they're different. If they're the same, it returns the value: 
  
 Atoms
+
 Atoms are literals, constants with their own name for value.
 * Atoms start with 'LOWERCASE' letters , Ohk so thats the reason variables starts with 'UPPERCASE' letters . 
-* An atom should be enclosed in single quotes (') if it does not begin with a lower-case letter or if it contains other characters than alphanumeric characters, underscore (_), or @.
+
+* An atom should be enclosed in single quotes (') if it does not begin with a lower-case letter or if it contains other characters than alphanumeric characters, 
+underscore (_), or @.
+
 * an atom is referred to in an "atom table" which consumes memory (4 bytes/atom in a 32-bit system, 8 bytes/atom in a 64-bit system).
+
 ** The atom table is not garbage collected, and so atoms will accumulate until the system tips over, either from memory usage or because 1048577 atoms were declared.
-6> saurabh = 'saurabh.ve'.
-** exception error: no match of right hand side value 'saurabh.ve'
-7> saurabh = 'saurabh'.
-saurabh
-8> saurabh.
-saurabh
+
+    6> saurabh = 'saurabh.ve'.
+    ** exception error: no match of right hand side value 'saurabh.ve'
+    7> saurabh = 'saurabh'.
+    saurabh
+    8> saurabh.
+    saurabh
+
+
 Camparisons 
+
 Operators : 'and' , 'or'  ( always evaluate arguments on both sides of the operator ) 
 '=:=' or ' =/=' is testing inequlity or equality.
 '=:=' will test for equality.
@@ -34,16 +43,18 @@ false
 16>14=:=14.
 true
 Other operators for comparisons are < (less than), > (greater than), >= (greater than or equal to) and =< (less than or equal to)
-23> 10>20.
-false
-24> 10<20.
-true
-25> 10 >=10.
-true
-26> 10 =< 10.
-true
-27> 10 == saurabh.
-false
+
+    23> 10>20.
+    false
+    24> 10<20.
+    true
+    25> 10 >=10.
+    true
+    26> 10 =< 10.
+    true
+    27> 10 == saurabh.
+    false
+
 IMP: Erlang has no such things as boolean true and false .   The terms true and false are atoms . 
 correct ordering of each element in a comparison is the following:
 number < atom < reference < fun < port < pid < tuple < list < bit string
@@ -52,35 +63,36 @@ number < atom < reference < fun < port < pid < tuple < list < bit string
  
 A tuple is a way to organize data. To group together many terms when you know how many there are. In Erlang, a tuple is written in the form {Element1, Element2, ..., ElementN}.
  
-29> FirstName = 'Saurabh' , LastName = 'Verma'.
-'Verma'
-30> Name = {FirstName,LastName}.
-{'Saurabh','Verma'}
- 
+    29> FirstName = 'Saurabh' , LastName = 'Verma'.
+    'Verma'
+    30> Name = {FirstName,LastName}.
+    {'Saurabh','Verma'}
+     
 We can extract Elements from a tuple by assigning a tuple to a set of unbound varibles , '=' operator compares both LHS and RHS and assigns the values to LHS if they are unbound variables 
-32> Name = {'Saurabh','Verma'}.
-{'Saurabh','Verma'}
-33> {FirstName,LastName} = Name.
-{'Saurabh','Verma'}
-34> FirstName.
-'Saurabh'
-35> LastName.
-'Verma'
- 
+
+    32> Name = {'Saurabh','Verma'}.
+    {'Saurabh','Verma'}
+    33> {FirstName,LastName} = Name.
+    {'Saurabh','Verma'}
+    34> FirstName.
+    'Saurabh'
+    35> LastName.
+    'Verma'
+     
  
 Lists
  
 Lists can contain anything! Numbers, atoms, tuples, other lists . The basic notation of a list is [Element1, Element2, ..., ElementN] and you can mix more than one type of data in it.
  
-40> ['Saurabh' , 'Verma' , {age,26} , male ].
-['Saurabh','Verma',{age,26},male]
+    40> ['Saurabh' , 'Verma' , {age,26} , male ].
+    ['Saurabh','Verma',{age,26},male]
  
 IMP: Erlang: strings! Strings are lists and the notation is absolutely the exact same!, Ok strings in Erlang is list of Numbers and Erlang will print a list of numbers as numbers only when atleast one of them couldn't represent a letter . 
 
-42> [97,98,99,4,5,6].
-[97,98,99,4,5,6]
-43> [97,98,99,104,105,106].
-"abchij"
+    42> [97,98,99,4,5,6].
+    [97,98,99,4,5,6]
+    43> [97,98,99,104,105,106].
+    "abchij"
 
                 There is no such thing as a real string in Erlang! OOOpps 
  
@@ -88,20 +100,21 @@ IMP: Erlang: strings! Strings are lists and the notation is absolutely the exact
 
 * Glue operator : '++' , glues two lists together 
 ** Both ++ and -- are right-associative.
-48> [1,2,3] ++ [4,5].
-[1,2,3,4,5]
-49> [1,2,3,4,5] -- [1,2,3].
-[4,5]
-50> [1,2,3] -- [1,2] -- [3].
-[3]
+
+    48> [1,2,3] ++ [4,5].
+    [1,2,3,4,5]
+    49> [1,2,3,4,5] -- [1,2,3].
+    [4,5]
+    50> [1,2,3] -- [1,2] -- [3].
+    [3]
 
  
 The first element of a list is named the Head, and the rest of the list is named the Tail.
 
-51> hd([1,2,3,4]).
-1
-52> tl([1,2,3,4]).
-[2,3,4]
+    51> hd([1,2,3,4]).
+    1
+    52> tl([1,2,3,4]).
+    [2,3,4]
 
 hd and tl are builtin functions to get them . 
 
@@ -109,9 +122,11 @@ Manipulations on head of lists can be performed via the help of pattern matching
 [Head|Tail]
 
 Example 
-53> List = [1,2,3,4,5,6].
-[1,2,3,4,5,6]
-54> List.
-[1,2,3,4,5,6]
-55> NewList = [1|List].
-[1,1,2,3,4,5,6]
+
+    53> List = [1,2,3,4,5,6].
+    [1,2,3,4,5,6]
+    54> List.
+    [1,2,3,4,5,6]
+    55> NewList = [1|List].
+    [1,1,2,3,4,5,6]
+
