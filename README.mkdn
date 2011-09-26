@@ -153,3 +153,8 @@ List can be built with the formula : [Term1|[Term2 | [Term3 | [....]]]]
 List Comprehensions
 ===================
 
+## List comprehensions are ways to build or modify lists ##
+
+List comprehensions are actually based on the idea of set notations , Example { x ∈ R: x = x²}
+
+
