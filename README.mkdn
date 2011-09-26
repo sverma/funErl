@@ -1,25 +1,30 @@
 Erlang Shell 
-You can start erlang shell via 'erl' command . 
-[saurabh.ve@serenity]~% erl
-Erlang (BEAM) emulator version 5.6.5 [source] [64-bit] [smp:8] [async-threads:0] [hipe] [kernel-poll:false]
-Eshell V5.6.5  (abort with ^G)
-1> 
-Variables  
+============
 
-Variable should start with either '_' or a capital letter . 
+You can start erlang shell via 'erl' command . 
+
+    [saurabh.ve@serenity]~% erl
+    Erlang (BEAM) emulator version 5.6.5 [source] [64-bit] [smp:8] [async-threads:0] [hipe] [kernel-poll:false]
+    Eshell V5.6.5  (abort with ^G)
+    1> 
+
+Variables  
+==========
+
+Variable should start with either '_' or a capital letter .
+ 
 * You can only assign a value to a variable once unless you trying out erlang shell which has function f(variable) to erase the variable. 
 * The = operator (not the variables) has the role of comparing values and complaining if they're different. If they're the same, it returns the value: 
  
 Atoms
+=====
 
 Atoms are literals, constants with their own name for value.
-* Atoms start with 'LOWERCASE' letters , Ohk so thats the reason variables starts with 'UPPERCASE' letters . 
 
+* Atoms start with 'LOWERCASE' letters , Ohk so thats the reason variables starts with 'UPPERCASE' letters . 
 * An atom should be enclosed in single quotes (') if it does not begin with a lower-case letter or if it contains other characters than alphanumeric characters, 
 underscore (_), or @.
-
 * an atom is referred to in an "atom table" which consumes memory (4 bytes/atom in a 32-bit system, 8 bytes/atom in a 64-bit system).
-
 ** The atom table is not garbage collected, and so atoms will accumulate until the system tips over, either from memory usage or because 1048577 atoms were declared.
 
     6> saurabh = 'saurabh.ve'.
@@ -31,6 +36,7 @@ underscore (_), or @.
 
 
 Camparisons 
+===========
 
 Operators : 'and' , 'or'  ( always evaluate arguments on both sides of the operator ) 
 '=:=' or ' =/=' is testing inequlity or equality.
@@ -38,10 +44,12 @@ Operators : 'and' , 'or'  ( always evaluate arguments on both sides of the opera
 '=/=' will test against equality.
 '=='  will test for arthemitic  equality ( differentiating between floats and integars ) 
 '/=' will against arthemitic  equality ( differentiating between floats and integars ) 
-14> saurabh =:= saurabh1.
-false
-16>14=:=14.
-true
+
+    14> saurabh =:= saurabh1.
+    false
+    16>14=:=14.
+    true
+
 Other operators for comparisons are < (less than), > (greater than), >= (greater than or equal to) and =< (less than or equal to)
 
     23> 10>20.
@@ -59,7 +67,8 @@ IMP: Erlang has no such things as boolean true and false .   The terms true and 
 correct ordering of each element in a comparison is the following:
 number < atom < reference < fun < port < pid < tuple < list < bit string
 
- Tuples
+Tuples
+======
  
 A tuple is a way to organize data. To group together many terms when you know how many there are. In Erlang, a tuple is written in the form {Element1, Element2, ..., ElementN}.
  
@@ -81,6 +90,7 @@ We can extract Elements from a tuple by assigning a tuple to a set of unbound va
      
  
 Lists
+=====
  
 Lists can contain anything! Numbers, atoms, tuples, other lists . The basic notation of a list is [Element1, Element2, ..., ElementN] and you can mix more than one type of data in it.
  
@@ -96,7 +106,8 @@ IMP: Erlang: strings! Strings are lists and the notation is absolutely the exact
 
                 There is no such thing as a real string in Erlang! OOOpps 
  
- Operations on Lists 
+Operations on Lists 
+===================
 
 * Glue operator : '++' , glues two lists together 
 ** Both ++ and -- are right-associative.
