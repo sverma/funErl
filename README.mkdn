@@ -202,6 +202,7 @@ h3. Note that the generator expressions coupled with pattern matching also act a
 Dealing with Bits 
 =================
 
+Erlang makes dealing with raw binary data fun and easy , *Bit syntax encloses binary data between << and >>* 
 
  
 
