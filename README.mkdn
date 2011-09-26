@@ -202,10 +202,20 @@ h3. Note that the generator expressions coupled with pattern matching also act a
 Dealing with Bits 
 =================
 
-Erlang makes dealing with raw binary data fun and easy , *Bit syntax encloses binary data between << and >>* 
+Erlang makes dealing with raw binary data fun and easy , *Bit syntax encloses binary data between << and >>* , splits it in readable segments, and each segment is separated by a comma. A segment is a sequence of bits of a binary.
 
- 
+Example : 
 
+Orange Color  is equal to "#F09A29" in hexadecimal notation . 
+
+    88> Orange= 16#F09A29.
+    15768105
+
+
+    90> Pixel = <<Orange:24>>.
+    <<240,154,41>>
+     
+The above code puts the binary values of "#F09A29" on 24 bits of space in the variable Pixel. 
 
 
 
