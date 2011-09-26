@@ -189,6 +189,20 @@ Patten <- List is named as generator expression , You can have more than one .
 
 Generic form of List comrehension can be expressed as NewList = [Expression || GeneratorExp1, GeneratorExp2, ..., GeneratorExpN, Condition1, Condition2, ... ConditionM]  
 
+h3. Note that the generator expressions coupled with pattern matching also act as a filter:
+
+    86> GameType = [{godOfwar, fantasyAction} , {heavenlySword,fantasyAction} , {dirt3,racing} , {gT5,racing} ].
+    [{godOfwar,fantasyAction},
+     {heavenlySword,fantasyAction},
+     {dirt3,racing},
+     {gT5,racing}]
+    87> RacingGames = [ Game || {Game,racing} <- GameType].
+    [dirt3,gT5]
+
+Dealing with Bits 
+=================
+
+
  
 
 
